@@ -1,0 +1,66 @@
+'''Right now this code only 
+
+'''
+from machine import UART,Pin
+import time 
+
+uart = UART(1, baudrate=9600, tx=Pin(8), rx=Pin(9))
+uart.init(bits=8, parity=None, stop=1)
+
+#Define the pin numbers for each LED light and button used
+led_red = Pin(18, Pin.OUT)
+led_green = Pin(19, Pin.OUT)
+led_yellow = Pin(20, Pin.OUT)
+sw4 = Pin(13, Pin.IN, Pin.PULL_DOWN) #button to indicate 
+
+# Initialize variables
+light = "red"  # Initial state
+
+# Helper functions
+def turn_on(led):
+    led.value(1)
+
+def turn_off(led):
+    led.value(0)
+
+# Main loop
+#CHAT GPT WAS USED FOR GUIDANCE
+while True:
+    # Check button press to simulate car arrival
+    if sw4.value() == 1:
+        if light == "red":
+            light = "green"
+        elif light == "green":
+            light = "yellow"
+
+    # State transitions
+    if light == "red":
+        turn_on(led_red)
+        turn_off(led_yellow)
+    elif light == "yellow":
+        turn_off(led_red)
+        turn_off(led_green)
+        turn_on(led_yellow)
+    elif light == "green":
+        turn_off(led_red)
+        turn_on(led_green)
+        turn_off(led_yellow)
+
+    time.sleep(1)  # Delay for simplicity
+
+
+
+'''
+# Function to send a message
+def send_message(message):
+    uart.write(message)
+
+while True:
+    message_to_send = "Hello, Pico 1!"  
+    send_message(message_to_send)
+    time.sleep(2)  # Send a message every 2 seconds
+    if uart.any():
+        received_message = uart.read()
+        print("Recieved message: ",received_message)
+        
+ '''       
