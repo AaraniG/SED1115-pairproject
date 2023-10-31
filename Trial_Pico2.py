@@ -9,7 +9,7 @@ from machine import UART, Pin, PWM
 import time
 
 # Constants for PWM
-PWM_PIN = Pin()  # Replace with the actual PWM pin number
+PWM_PIN = Pin(2)  # Replace with the actual PWM pin number
 PWM_FREQ = 1000   # Change to your desired PWM frequency
 
 # Initialize PWM for measuring the PWM signal
@@ -17,7 +17,7 @@ pwm_receiver = PWM(PWM_PIN)
 pwm_receiver.freq(PWM_FREQ)
 
 # Initialize UART for serial communication
-uart = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))  # Replace tx and rx pins with actual pin numbers
+uart = UART(1, baudrate=9600, tx=Pin(8), rx=Pin(9))  # Replace tx and rx pins with actual pin numbers
 
 while True:
     if uart.any():
