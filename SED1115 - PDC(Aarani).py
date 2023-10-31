@@ -9,7 +9,7 @@ from machine import PWM,UART,Pin
 import time
 
 #Constant for PWM
-PWM_PIN = Pin() # need to add the pin number
+PWM_PIN = Pin(2) # need to add the pin number
 PWM_FREQ = 1000 #change to desired frequency
 
 # Initialize PWM
