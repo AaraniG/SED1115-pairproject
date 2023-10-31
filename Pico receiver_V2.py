@@ -25,7 +25,7 @@ while True:
         # Check if the received message contains the desired PWM value
         if "Desired PWM Value" in received_message:
             desired_pwm_value = float(received_message.split(":")[1].strip()[:-1])
-
+            
             # Read and measure the actual PWM value
             measured_pwm_value = (pwm_receiver.duty_u16() / 65535) * 100  # Convert to a percentage
 
