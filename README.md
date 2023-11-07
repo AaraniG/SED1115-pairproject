@@ -1,6 +1,6 @@
 # SED1115-pairproject
-FINALS CODES ARE NAMED:
-Pico1_code_FINAL.py
+FINAL CODES ARE NAMED:
+Pico1_code_FINAL.py AND 
 Pico_receiver_V3_FINAL.py
 
 
