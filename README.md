@@ -1,4 +1,9 @@
 # SED1115-pairproject
+FINALS CODES ARE NAMED:
+Pico1_code_FINAL.py
+Pico_receiver_V3_FINAL.py
+
+
 Overview:
 This project involves two Raspberry Pi Pico devices (let's call them Pico 1 and Pico 2), and it's all about checking the accuracy of a special type of electrical signal called PWM (Pulse Width Modulation).
 
