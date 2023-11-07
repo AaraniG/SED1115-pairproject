@@ -8,11 +8,12 @@ from machine import UART, Pin, PWM, ADC
 import time
 
 # Constants for PWM
-PWM_PIN = Pin(28)  # PWM pin number
+PWM_PIN = Pin(28)  # ADC pin number for PWM input
 PWM_FREQ = 1000   # PWM frequency
 
-# Initialize PWM for measuring the PWM signal
-pwm_receiver = ADC(PWM_PIN) #lab 3
+# Create an ADC (Analog to Digital Converter) object for PWM input
+# An ADC is used to convert an analog voltage into a digital value
+pwm_receiver = ADC(PWM_PIN) ## Initialize an ADC object for PWM input (Lab 3)
 
 
 # Initialize UART for serial communication
@@ -27,7 +28,7 @@ while True:
         if "Desired PWM Value" in received_message:
             desired_pwm_value = float(received_message.split(":")[1].strip()[:-1])
             
-            # Read and measure the actual PWM value
+            # Read and measure the actual PWM value -> fixed by adding ADC!
             measured_pwm_value = (pwm_receiver.read_u16() / 65535) * 100  # Convert to a percentage
 
             # Calculate the difference between desired and measured PWM values
