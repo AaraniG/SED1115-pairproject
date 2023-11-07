@@ -1,4 +1,22 @@
-# ... (previous code)
+Project's requirement is to monitor the quality and accuracy of the
+PWM output of another Pico device using serial communication.
+
+This code is for the PWM Signal Receiver and Analyzer (Pico 2)
+ChatGPT was used for guidance
+'''
+from machine import UART, Pin, PWM
+import time
+
+# Constants for PWM
+PWM_PIN = Pin(2)  # Replace with the actual PWM pin number
+PWM_FREQ = 1000   # Change to your desired PWM frequency
+
+# Initialize PWM for measuring the PWM signal
+pwm_receiver = PWM(PWM_PIN)
+pwm_receiver.freq(PWM_FREQ)
+
+# Initialize UART for serial communication
+uart = UART(1, baudrate=9600, tx=Pin(8), rx=Pin(9))  # Replace tx and rx pins with actual pin numbers
 
 while True:
     if uart.any():
